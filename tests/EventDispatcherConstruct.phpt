@@ -1,6 +1,5 @@
 --TEST--
-
---INI--
+Test we can instanciate the object
 --FILE--
 <?php
 

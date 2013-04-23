@@ -14,7 +14,7 @@ zend_class_entry *php_eventdispatcher_fc_entry;
 const zend_function_entry eventdispatcher_functions[] = {
     PHP_ME(EventDispatcher, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
     PHP_ME(EventDispatcher, addListener, NULL, ZEND_ACC_PUBLIC)
-    PHP_ME(EventDispatcher, doDispatch, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(EventDispatcher, dispatch, NULL, ZEND_ACC_PUBLIC)
     /* End of functions */
     { NULL, NULL, NULL }
 };
@@ -82,8 +82,18 @@ PHP_METHOD(EventDispatcher, __construct)
 
 PHP_METHOD(EventDispatcher, addListener)
 {
+    zval *retval_ptr = NULL;
+    char *eventname, *str;
+    int eventname_len;
+    zend_fcall_info fci;
+    zend_fcall_info_cache fci_cache;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sf*", &eventname, &eventname_len, &fci, &fci_cache, &fci.params, &fci.param_count) == FAILURE) {
+        return;
+    }
 }
 
-PHP_METHOD(EventDispatcher, doDispatch)
+PHP_METHOD(EventDispatcher, dispatch)
 {
+    RETURN_STRING("ping", 4);
 }

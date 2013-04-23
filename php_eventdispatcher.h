@@ -18,6 +18,6 @@ extern zend_module_entry eventdispatcher_module_entry;
 
 PHP_METHOD(EventDispatcher, __construct);
 PHP_METHOD(EventDispatcher, addListener);
-PHP_METHOD(EventDispatcher, doDispatch);
+PHP_METHOD(EventDispatcher, dispatch);
 
 #endif
